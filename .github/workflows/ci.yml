@@ -32,4 +32,4 @@ jobs:
           docker build -t msaitbutun/huawei-test-ortami:latest .
 
       - name: Push Docker image
-        run: docker push msaitbutun/huawei-test-ortami:latest
+        run: docker push saitbutun/huawei-test-ortami:latest
