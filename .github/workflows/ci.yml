@@ -32,7 +32,7 @@ jobs:
           echo "COPY index.html /usr/share/nginx/html/index.html" >> Dockerfile
           echo "COPY error.html /usr/share/nginx/html/error.html" >> Dockerfile
 
-          docker build -t msaitbutun/huawei-test-ortami:latest .
+          docker build -t saitbutun/huawei-test-ortami:latest .
 
       - name: Push Docker image
         run: docker push saitbutun/huawei-test-ortami:latest
