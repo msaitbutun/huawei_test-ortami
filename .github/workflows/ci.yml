@@ -3,7 +3,10 @@ name: Build and Push Nginx Docker Image
 on:
   push:
     branches:
-      - main  # Veya senin default branch'in neyse onu yaz
+      - main
+  workflow_dispatch:
+
+      
 
 jobs:
   build-and-push:
