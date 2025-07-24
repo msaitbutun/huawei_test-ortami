@@ -25,14 +25,12 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Docker image
+      - name: Build and Push Docker image
         run: |
-          # Dockerfile oluşturuyoruz:
           echo "FROM nginx:alpine" > Dockerfile
           echo "COPY index.html /usr/share/nginx/html/index.html" >> Dockerfile
           echo "COPY error.html /usr/share/nginx/html/error.html" >> Dockerfile
+  
+           docker build -t saitbutun/huawei-test-ortami:latest .
+           docker push saitbutun/huawei-test-ortami:latest
 
-          docker build -t saitbutun/huawei-test-ortami:latest .
-
-      - name: Push Docker image
-        run: docker push saitbutun/huawei-test-ortami:latest
