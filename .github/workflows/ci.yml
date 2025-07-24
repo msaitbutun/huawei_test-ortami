@@ -1,0 +1,35 @@
+name: Build and Push Nginx Docker Image
+
+on:
+  push:
+    branches:
+      - main  # Veya senin default branch'in neyse onu yaz
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Docker image
+        run: |
+          # Dockerfile oluşturuyoruz:
+          echo "FROM nginx:alpine" > Dockerfile
+          echo "COPY index.html /usr/share/nginx/html/index.html" >> Dockerfile
+          echo "COPY error.html /usr/share/nginx/html/error.html" >> Dockerfile
+
+          docker build -t msaitbutun/huawei-test-ortami:latest .
+
+      - name: Push Docker image
+        run: docker push msaitbutun/huawei-test-ortami:latest
