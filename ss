@@ -1,2 +1,0 @@
-sdfasgdsfgdfgaa
-sdalkfjdaişgalsşkglksdfkgmdlşfvkmqfalsgşöfd
